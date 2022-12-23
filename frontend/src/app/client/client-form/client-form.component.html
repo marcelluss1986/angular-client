@@ -1,0 +1,75 @@
+<h1 class="mt-4">Clients</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">{{client.id ? 'Editing' : 'Register'}}</li>
+</ol>
+<div class="container">
+    <form #clientForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success == true">
+                    Client saved or updated with success!
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+                    {{error}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12"></div>
+        </div>
+        <div class="row" *ngIf="client.id">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>ID:</label>
+                    <input type="text" class="form-control" name="id" [ngModel]="client.id" disabled="true">
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="client.registerDate">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>REGISTER DATE:</label>
+                    <input type="text" class="form-control" name="registerDate" [ngModel]="client.registerDate"
+                        disabled="true">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>NAME: *</label>
+                    <input type="text" class="form-control" [(ngModel)]="client.name" name="name">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>CPF: *</label>
+                    <input type="text" class="form-control" name="cpf" [(ngModel)]="client.cpf">
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success" *ngIf="!client.id">
+                    <i class="fa fa-save"></i> Save
+                </button>
+
+                <button type="submit" class="btn btn-primary" *ngIf="client.id">
+                    <i class="fa fa-sync-alt"></i> Update
+                </button>
+
+                <button type="button" class="btn btn-danger ml-2" (click)="turnBackClientList()">
+                    <i class="fa fa-arrow-left"></i> Back
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
