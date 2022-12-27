@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.EntityManagerFactory;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -15,12 +16,11 @@ import java.util.List;
 @CrossOrigin(value = "http://localhost:4200")
 public class ClientController {
 
-    private final ClientRepository repository;
+    @Autowired
+    private ClientRepository repository;
 
     @Autowired
-    public ClientController(ClientRepository repository) {
-        this.repository = repository;
-    }
+    private EntityManagerFactory entityManagerFactory;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -32,6 +32,7 @@ public class ClientController {
     public List<Client> getAll(){
         return repository.findAll();
     }
+
     @GetMapping(value = "/{id}")
     public Client findClientById(@PathVariable Long id) {
         return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found!!"));
@@ -49,6 +50,7 @@ public class ClientController {
 
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+
     public void updateClientData(@Valid @PathVariable Long id, @RequestBody Client entity) {
         repository.findById(id).map(client -> {
                     client.setName(entity.getName());
