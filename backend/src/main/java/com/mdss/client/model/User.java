@@ -1,6 +1,7 @@
 package com.mdss.client.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @Entity
@@ -12,9 +13,11 @@ public class User {
     private Long id;
 
     @Column(unique = true)
+    @NotEmpty(message = "{field.login.required}")
     private String username;
 
     @Column
+    @NotEmpty(message = "{field.password.required}")
     private String password;
 
     public User(){
