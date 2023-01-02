@@ -13,7 +13,7 @@ export class ClientsService {
 
   constructor(private http: HttpClient) { }
 
-  save(client: Client): Observable<Client> {
+  save(client: Client): Observable<Client> {    
     return this.http.post<Client>(`${this.apiURL}`, client);
   }
 
@@ -22,7 +22,7 @@ export class ClientsService {
   }
 
   getClient(): Observable<Client[]> {
-    return this.http.get<Client[]>(`${this.apiURL}`);
+    return this.http.get<Client[]>(this.apiURL);
   }
 
   getClientById(id: number): Observable<Client> {

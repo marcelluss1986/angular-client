@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
-@CrossOrigin(value = "http://localhost:4200")
 public class ApplicationControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -29,7 +28,7 @@ public class ApplicationControllerAdvice {
 
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity handleResponseStatusException(ResponseStatusException ex){
-        String errorMessage = ex.getMessage();
+        String errorMessage = ex.getReason();
         HttpStatus statusCode = ex.getStatus();
         ApiErrors apiErrors = new ApiErrors(errorMessage);
         return new ResponseEntity(apiErrors, statusCode);

@@ -18,7 +18,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/services-provided")
-@CrossOrigin(value = "http://localhost:4200")
 public class serviceProvidedController {
 
     @Autowired

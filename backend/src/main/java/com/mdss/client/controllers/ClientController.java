@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/clients")
-@CrossOrigin(value = "http://localhost:4200")
 public class ClientController {
 
     @Autowired

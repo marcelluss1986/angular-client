@@ -12,7 +12,6 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/users")
-@CrossOrigin(value = "http://localhost:4200")
 public class UserController {
 
     @Autowired

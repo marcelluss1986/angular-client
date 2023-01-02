@@ -14,18 +14,17 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-@Profile(value = "prod")
 public class WebConfig {
 
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean(){
-        List<String> allOrigins = Arrays.asList("http://localhost:4200");
+        List<String> allOrigins = Arrays.asList("http://localhost:4200", "http://localhost:8080");
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
         corsConfiguration.setAllowedOrigins(allOrigins);
         corsConfiguration.setExposedHeaders(allOrigins);
         corsConfiguration.setAllowedMethods(allOrigins);
-        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setAllowCredentials(false);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
