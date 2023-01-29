@@ -12,6 +12,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/users")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired

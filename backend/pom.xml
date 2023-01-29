@@ -68,6 +68,12 @@
 			<version>6.2.0.CR1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 
 	</dependencies>
 
